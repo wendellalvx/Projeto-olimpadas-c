@@ -9,26 +9,31 @@ void carregarBios(){
 FILE *arq + fopen("atheletes/bios.csv", "r");  
 /*essa parte é pra abrir o arquivo que 
 vai estar os dados, mas vai ser aberto somente em modo de leitura*/
-if (!arq) return:
+if (!arq) return: /* aqui é pra se der erro em achar ou o arquivo estiver corrompido ele parar*/
 char linha[2048];
 fgets(linha, sizeof(linha(, arq);
-while(fgets(linha, sizeof(linha), arq)){
+while(fgets(linha, sizeof(linha), arq)){  */vai ler todas a linhas até o final exceto a primeira que é o cabeçalho*/
 char *token;
-char *copy = strdup(linha);
+char *copy = strdup(linha); 
+*/ essa parte vai criar uma copia da linha que está 
+sendo lida para poder fazer a alteração que é tirar a virgula que separa cada coluna*/
 char *sexo = strtok(copy, ",");
-char *id_str = NULL;
-for(int i =0; i<7; i++) id_str = strtok(NULL, ",");
-if (id_str && sexo) {
-int id = atoi(id_str);
-if (id<MAX_ATHELETES){
-sexos[id] = sexo[0];
+/* o motivo dessa retirada da virgula é que sem ela a maquina iria ler a linha inteira
+como se fosse uma única string, mas com essa separação consigo separar as informações necessarias*/
+char *id_str = NULL; /* parte que vai guardar o id do atleta com string inicialmente*/
+for(int i =0; i<7; i++) id_str = strtok(NULL, ","); /* o id está na 8º coluna, como foi feito o primeiro corte fora for, dentro dele só precisa de 7*/
+if (id_str && sexo) /* garante que só seja feita essa operação se achar o sexo e o id */{
+int id = atoi(id_str); /* essa parte transforma o id que está como string em inteiro, isso td porque facilita trabalhar com ele mais para frente*/
+if (id<MAX_ATHLETES) /* garante que a quantidade esteja dentro do limite*/ 
+{
+sexos[id] = sexo[0]; /* facilita pegando somente a inicial do sexo e atribui ao id daquele atleta*/
 }}
-free(copy);
-} fclose(arq);
+free(copy); /* apaga a copia que fiz para realizar essas alterações*/
+} fclose(arq); /* fecha o arquivo depois de ter utilizado ele para que possa ser usando em outras questões*/
 void calcular_quanti(){
-FILE *arq +fopen("results/results.csv", "r");
+FILE *arq +fopen("results/results.csv", "r"); /* abri o arquivo em modo de leitura*/
 if (!arq){
-printf("Erro ao abrir o arquivo");
+printf("Erro ao abrir o arquivo"); /* se caso ocorrer um erro na hora de abrir o arquivo*/
 return;
 }
 char linha[2048];
@@ -55,6 +60,7 @@ contaMulher++;
 } printf("%-20s | %d\n", edicaoAtual, contaMulher);
 fclose(arq);
 }
+
 
 
 
