@@ -13,15 +13,10 @@ if (!arq) return; /* aqui é pra se der erro em achar ou o arquivo estiver corro
 char linha[2048];
 fgets(linha, sizeof(linha), arq);
 while(fgets(linha, sizeof(linha), arq)){  /*vai ler todas a linhas até o final exceto a primeira que é o cabeçalho*/
-char *copy = strdup(linha); 
-char *id_str = strtok(copy, ",");
-char *token;
-/* essa parte vai criar uma copia da linha que está 
-sendo lida para poder fazer a alteração que é tirar a virgula que separa cada coluna*/
-char *sexo = strtok(copy, ",");
-/* o motivo dessa retirada da virgula é que sem ela a maquina iria ler a linha inteira
-como se fosse uma única string, mas com essa separação consigo separar as informações necessarias*/
+char *copy = strdup(linha); /* essa parte vai criar uma copia da linha que está sendo lida para poder fazer a alteração que é tirar a virgula que separa cada coluna*/
+char *sexo = strtok(copy, ",");/* o motivo dessa retirada da virgula é que sem ela a maquina iria ler a linha inteira como se fosse uma única string, mas com essa separação consigo separar as informações necessarias*/
 char *id_str = NULL; /* parte que vai guardar o id do atleta com string inicialmente*/
+char *token;
 for(int i =0; i<7; i++) id_str = strtok(NULL, ","); /* o id está na 8º coluna, como foi feito o primeiro corte fora for, dentro dele só precisa de 7*/
 if (id_str && sexo) /* garante que só seja feita essa operação se achar o sexo e o id */{
 int id = atoi(id_str); /* essa parte transforma o id que está como string em inteiro, isso td porque facilita trabalhar com ele mais para frente*/
@@ -62,6 +57,7 @@ contaMulher++;
 } printf("%-20s | %d\n", edicaoAtual, contaMulher);
 fclose(arq);
 }
+
 
 
 
