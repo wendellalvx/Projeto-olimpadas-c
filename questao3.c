@@ -6,16 +6,17 @@ char sexos[MAX_ATLETAS];
 /*Nessa questão dividi em duas partes uma sendo para separar quais atletas eram mulheres e 
 a outra para dividir essas mulheres em suas respectivas edições*/
 void carregarBios(){
-FILE *arq = fopen("atheletes/bios.csv", "r");  
+FILE *arq = fopen("athletes/bios.csv", "r");  
 /*essa parte é pra abrir o arquivo que 
 vai estar os dados, mas vai ser aberto somente em modo de leitura*/
 if (!arq) return; /* aqui é pra se der erro em achar ou o arquivo estiver corrompido ele parar*/
 char linha[2048];
-fgets(linha, sizeof(linha(, arq));
-while(fgets(linha, sizeof(linha), arq)){  */vai ler todas a linhas até o final exceto a primeira que é o cabeçalho*/
-char *token;
+fgets(linha, sizeof(linha), arq);
+while(fgets(linha, sizeof(linha), arq)){  /*vai ler todas a linhas até o final exceto a primeira que é o cabeçalho*/
 char *copy = strdup(linha); 
-*/ essa parte vai criar uma copia da linha que está 
+char *id_str = strtok(copy, ",");
+char *token;
+/* essa parte vai criar uma copia da linha que está 
 sendo lida para poder fazer a alteração que é tirar a virgula que separa cada coluna*/
 char *sexo = strtok(copy, ",");
 /* o motivo dessa retirada da virgula é que sem ela a maquina iria ler a linha inteira
@@ -30,6 +31,7 @@ sexos[id] = sexo[0]; /* facilita pegando somente a inicial do sexo e atribui ao 
 }}
 free(copy); /* apaga a copia que fiz para realizar essas alterações*/
 } fclose(arq); /* fecha o arquivo depois de ter utilizado ele para que possa ser usando em outras questões*/
+}
 void calcular_quanti(){
 FILE *arq = fopen("results/results.csv", "r"); /* abri o arquivo em modo de leitura*/
 if (!arq){
@@ -43,10 +45,9 @@ fgets(linha, sizeof(linha), arq);
 /* segue a mesma logica da separação de mulheres e homens anteriormente*/
 printf("Edição Olimpica | quantidade de mulheres\n");
 while (fgets(linha, sizeof(linha), arq)){
-char *edicao = strdup(linha), ",");
+char *edicao = strtok(linha_copy, ",");
+char *linha_copy = strdup(linha); /* separa o nome e ano da edição como ela é a primeira parte*/
 char *id_str =NULL;
-char *linha_copy = strdup(linha);
-char *t = strtok(linha_copy, ","); /* separa o nome e ano da edição como ela é a primeira parte*/
 for(int i =0; i < 6; i++) id_str = strtok(NULL,","); /* pulo todas as outras colunas até chegar na parte do id do atleta*/
 if (edicao && id_str){
 if(strcmp(edicaoAtual, "") !=0 && strcmp(edicaoAtual, edicao) !=0){ /* testa se na nova linha é a mesma edição ou já é outra*/
@@ -61,6 +62,7 @@ contaMulher++;
 } printf("%-20s | %d\n", edicaoAtual, contaMulher);
 fclose(arq);
 }
+
 
 
 
