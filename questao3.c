@@ -57,11 +57,3 @@ contaMulher++;
 } printf("%-20s | %d\n", edicaoAtual, contaMulher);
 fclose(arq);
 }
-
-
-
-
-
-
-
-
