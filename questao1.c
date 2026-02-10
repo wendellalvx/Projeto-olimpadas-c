@@ -78,3 +78,4 @@ int main() {
     fgets(digitasport, sizeof(digitasport), stdin);
     rankingSport(medalhas, total_medalhas, digitasport);
 }
+
