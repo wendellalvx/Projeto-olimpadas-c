@@ -4,10 +4,8 @@
 #define MAX_MEDALHAS 9999
 #define MAX_RANKING 100
 
-/*Ranking dos países com mais medalhas em cada esporte. Top 10, derivando dele,
-crio um ranking dos atletas com maiores medalhas de cada*/
+/*8º Questão - Ranking dos países com mais medalhas em cada esporte.*/
 /*2 dados: Nacionalidade e Esporte (Nationality, Discipline)*/
-/*Isso me deu dor de cabeça. Ainda não acabou.*/
 
 void carregarBios(){
     FILE *arq = fopen("results/results.csv", "r");
@@ -17,9 +15,9 @@ void carregarBios(){
 while (fgets(linha, sizeof(linha), arq)){
     char *token;
     char *copy = strdup(linha);
-    for(int i=0; i<8; i++) strtok(copy, ","); /*Ordem de chamada estava errada*/
+    for(int i=0; i<7; i++) strtok(copy, ","); /*Ordem de chamada estava errada; decidi puxar NOC ao invés de Nacionality, visto que no CSV Nacionality está vazio.*/
+    char *Nationality = strtok(NULL, ","); /*AKA NOC*/
     char *Discipline = strtok(NULL, ",");
-    char *Nationality = strtok(NULL, ",");
     free(copy);
   }fclose(arq);
 } /*Parte de leitura explicada na questão 3, reutilizada para
@@ -78,5 +76,6 @@ int main() {
     fgets(digitasport, sizeof(digitasport), stdin);
     rankingSport(medalhas, total_medalhas, digitasport);
 }
+
 
 
