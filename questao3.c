@@ -40,8 +40,8 @@ fgets(linha, sizeof(linha), arq);
 /* segue a mesma logica da separação de mulheres e homens anteriormente*/
 printf("Edição Olimpica | quantidade de mulheres\n");
 while (fgets(linha, sizeof(linha), arq)){
-char *edicao = strtok(linha_copy, ",");
 char *linha_copy = strdup(linha); /* separa o nome e ano da edição como ela é a primeira parte*/
+char *edicao = strtok(linha_copy, ",");
 char *id_str =NULL;
 for(int i =0; i < 6; i++) id_str = strtok(NULL,","); /* pulo todas as outras colunas até chegar na parte do id do atleta*/
 if (edicao && id_str){
@@ -57,6 +57,7 @@ contaMulher++;
 } printf("%-20s | %d\n", edicaoAtual, contaMulher);
 fclose(arq);
 }
+
 
 
 
