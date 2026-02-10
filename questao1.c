@@ -17,9 +17,9 @@ void carregarBios(){
 while (fgets(linha, sizeof(linha), arq)){
     char *token;
     char *copy = strdup(linha);
-    char *Discipline = strtok(copy, ",");
+    for(int i=0; i<8; i++) strtok(copy, ","); /*Ordem de chamada estava errada*/
+    char *Discipline = strtok(NULL, ",");
     char *Nationality = strtok(NULL, ",");
-    for(int i=0; i<9; i++) Nationality = strtok(NULL, ",");
     free(copy);
   }fclose(arq);
 } /*Parte de leitura explicada na questão 3, reutilizada para
@@ -78,4 +78,5 @@ int main() {
     fgets(digitasport, sizeof(digitasport), stdin);
     rankingSport(medalhas, total_medalhas, digitasport);
 }
+
 
