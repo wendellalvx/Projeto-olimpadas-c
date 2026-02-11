@@ -6,7 +6,7 @@ char edicaoAtual[100] = "";
 int totalBrasil = 0;
 fgets(linha, sizeof(linha), arq ); 
 printf(" Evolução das participações do Brasil na Olímpiadas\n");
-while(fgets(linha, sizeof(linha), arq)){
+while(fgets(linha, sizeof(linha), arq)){ /*vai ser repetido esse caminha ate o fim do arquivo, copiando a linha e realizando as alterações*/
 char *linha_copy = strdup(linha);
 char *edicao = strtok(linha_copy, ",");
 char *noc = NULL;
@@ -28,6 +28,7 @@ printf("%-30s | %d\n", edicaoAtual, totalBrasil);
 }
 fclose(arq);
 }
+
 
 
 
