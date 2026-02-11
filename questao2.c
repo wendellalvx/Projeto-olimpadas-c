@@ -85,10 +85,3 @@ void lista(){ /*Imprime o resultado*/
         }
     }
 }
-
-int main(){
-    carregarBios();
-    agrupar();
-    lista();
-    return 0;
-}
