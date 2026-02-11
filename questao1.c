@@ -75,12 +75,3 @@ printf("\n===== TOP 10 %s =====\n", Discipline);
         printf("%d. %s - %d medalhas\n", i + 1, ranking[i].NOC, ranking[i].total);
     }
 }
-int main() {
-    carregarBios();
-    char digitasport[50];
-printf("Digite o esporte que deseja: ");
-fgets(digitasport, sizeof(digitasport), stdin);
-digitasport[strcspn(digitasport, "\n")] = '\0'; 
-rankingSport(medalhas, total_medalhas, digitasport);
-return 0;
-}
