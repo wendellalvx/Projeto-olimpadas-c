@@ -10,7 +10,7 @@ while(fgets(linha, sizeof(linha), arq)){ /*vai ser repetido esse caminha ate o f
 char *linha_copy = strdup(linha);
 char *edicao = strtok(linha_copy, ",");
 char *noc = NULL;
-for(int i=0; i<4; i++) noc = strtok(NULL, ",");
+for(int i=0; i<7; i++) noc = strtok(NULL, ",");
 if (edicao && noc){
 if(strcmp(edicaoAtual, "") !=0 && strcmp(edicaoAtual, edicao) != 0){
   if(totalBrasil>0) {
@@ -28,6 +28,7 @@ printf("%-30s | %d\n", edicaoAtual, totalBrasil);
 }
 fclose(arq);
 }
+
 
 
 
