@@ -24,8 +24,11 @@ totalBrasil++;
 }}
 free(linha_copy);}
 if (totalBrasil>0){ /* imprime a ultima linha, porque como no "if" anterior não resolveria porque naõa mudaria a edição, essa parte teve que ser feita*/
-  printf("%-30s | %d\n", edicaoAtual, totalBrasil)};
-fclose(arq);}
+printf("%-30s | %d\n", edicaoAtual, totalBrasil);
+}
+fclose(arq);
+}
+
 
 
 
