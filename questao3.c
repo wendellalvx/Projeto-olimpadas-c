@@ -17,7 +17,7 @@ char *copy = strdup(linha); /* essa parte vai criar uma copia da linha que está
 char *sexo = strtok(copy, ",");/* o motivo dessa retirada da virgula é que sem ela a maquina iria ler a linha inteira como se fosse uma única string, mas com essa separação consigo separar as informações necessarias*/
 char *id_str = NULL; /* parte que vai guardar o id do atleta com string inicialmente*/
 char *token;
-for(int i =0; i<7; i++) id_str = strtok(NULL, ","); /* o id está na 8º coluna, como foi feito o primeiro corte fora for, dentro dele só precisa de 7*/
+for(int i =0; i<6; i++) id_str = strtok(NULL, ","); /* o id está na 8º coluna, como foi feito o primeiro corte fora for, dentro dele só precisa de 7*/
 if (id_str && sexo) /* garante que só seja feita essa operação se achar o sexo e o id */{
 int id = atoi(id_str); /* essa parte transforma o id que está como string em inteiro, isso td porque facilita trabalhar com ele mais para frente*/
 if (id<MAX_ATLETAS) /* garante que a quantidade esteja dentro do limite*/ 
@@ -57,3 +57,4 @@ contaMulher++;
 } printf("%-20s | %d\n", edicaoAtual, contaMulher);
 fclose(arq);
 }
+
